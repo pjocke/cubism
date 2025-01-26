@@ -73,14 +73,14 @@ def perspective(d):
 # x
 theta = numpy.radians(0)
 # y
-phi = numpy.radians(22)
+phi = numpy.radians(382)
 # z
 psi = numpy.radians(0)
 
 # Define distance to camera
 d = 5
 
-# Combine transformation matricies and transform verticies
+# Combine transformation matricies and transform vertices
 transformation = rotation_z(psi) @ rotation_y(phi) @ rotation_x(theta)
 transformed = transformation @ vertices
 
@@ -102,7 +102,7 @@ y = projected[1]
 #   |       |
 # 2 + ----- + 3
 #
-# Back:
+# Back (as seen from front):
 # 4 + ----- + 5
 #   |       |
 #   |       |
@@ -122,11 +122,25 @@ edges = [
 
 pyplot.figure(figsize=(8, 8))
 
+# Draw front edges
+for edge in (0, 1, 2, 3):
+    pyplot.plot([x[edges[edge][0]], x[edges[edge][1]]], [y[edges[edge][0]], y[edges[edge][1]]], "c-")
+
+# Draw back edges
+for edge in (4, 5, 6, 7):
+    pyplot.plot([x[edges[edge][0]], x[edges[edge][1]]], [y[edges[edge][0]], y[edges[edge][1]]], "m-")
+
+# Draw connecting edges ("sides")
+for edge in (8, 9):
+    pyplot.plot([x[edges[edge][0]], x[edges[edge][1]]], [y[edges[edge][0]], y[edges[edge][1]]], "y-")
+for edge in (10, 11):
+    pyplot.plot([x[edges[edge][0]], x[edges[edge][1]]], [y[edges[edge][0]], y[edges[edge][1]]], "k-")
+
 # Draw lines between vertices
-for edge in edges:
-    xs = [x[edge[0]], x[edge[1]]]
-    ys = [y[edge[0]], y[edge[1]]]
-    pyplot.plot(xs, ys, "b-")
+#for edge in edges:
+#    xs = [x[edge[0]], x[edge[1]]]
+#    ys = [y[edge[0]], y[edge[1]]]
+#    pyplot.plot(xs, ys, "b-")
 
 pyplot.grid(True)
 pyplot.show()
