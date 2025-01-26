@@ -84,7 +84,7 @@ d = 5
 transformation = rotation_z(psi) @ rotation_y(phi) @ rotation_x(theta)
 transformed = transformation @ vertices
 
-# Project transformed verticies using projection matrix
+# Project transformed vertices using projection matrix
 projection = perspective(d)
 projected = projection @ transformed
 
