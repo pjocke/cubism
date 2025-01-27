@@ -1,8 +1,12 @@
 import numpy
 import matplotlib.pyplot as pyplot
 
-# Tetrahexahedron
-# https://en.wikipedia.org/wiki/Tetrakis_hexahedron
+# Tetrahexahedron (https://en.wikipedia.org/wiki/Tetrakis_hexahedron)
+#
+# TODO: change from equilateral to isosceles triangles
+#       simplify vertices to be only points
+#
+
 vertices = numpy.array([
     # Left (x centered)
     [-2, 0, 0, 1],
