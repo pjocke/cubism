@@ -1,6 +1,8 @@
 import numpy
 import matplotlib.pyplot as pyplot
 
+# Tetrahexahedron
+# https://en.wikipedia.org/wiki/Tetrakis_hexahedron
 vertices = numpy.array([
     # Left (x centered)
     [-2, 0, 0, 1],
