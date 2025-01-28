@@ -136,7 +136,7 @@ for face in faces:
     #print(face[1], face[0], face[2])
     edge = face[0]
     xys = [(x[edge[0]], y[edge[0]]), (x[edge[1]], y[edge[1]]), (x[edge[2]], y[edge[2]])]
-    t = pyplot.Polygon(xys, edgecolor='None', facecolor=c[face[2]], alpha=1.0)
+    t = pyplot.Polygon(xys, edgecolor='None', facecolor=c[face[2]], alpha=0.75)
     pyplot.gca().add_patch(t)
     i+=1
 
