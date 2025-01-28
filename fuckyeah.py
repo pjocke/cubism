@@ -90,7 +90,7 @@ faces = [
     [(3, 6, 2), (z[3]+z[6]+z[2])/3, 5]
 ]
 
-# Painter's algorithm
+# Painter's algorithm, https://en.wikipedia.org/wiki/Painter%27s_algorithm
 faces.sort(key=lambda x: x[1])
 
 # Plött

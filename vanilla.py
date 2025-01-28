@@ -106,10 +106,12 @@ for col in range(len(vertices[0])):  # Iterate over columns of the original matr
     transposed_vertices.append(new_row)
 
 spin = 0
+zoom = 10
+direction = 1
 
 # This shit is done 60 times a second, rip
 def TIC():
-    global spin
+    global spin, zoom, direction
 
     # x
     theta = math.radians(spin) #30
@@ -123,7 +125,7 @@ def TIC():
     rotation_matrix = matrix_multiply(rotation_matrix, rotation_x(theta))
 
     # Combine the rotation and translation matrices to one transformation matrix
-    translation_matrix = translation(0, 0, -15)
+    translation_matrix = translation(0, 0, -zoom)
     transformation_matrix = matrix_multiply(translation_matrix, rotation_matrix)
 
     # Do the transformation
@@ -143,7 +145,7 @@ def TIC():
     y = projected_vertices[1]
     z = projected_vertices[2]
 
-    # The six pair of faces of the cube, vertices and average depth of the entire face
+    # The six pair of faces of the cube, vertices and average depth
     faces = [
         # Front
         [(0, 1, 3), (z[0]+z[1]+z[3])/3 + (z[3]+z[1]+z[2])/3, 0],
@@ -184,3 +186,11 @@ def TIC():
         tri(coords[0][0], coords[0][1], coords[1][0], coords[1][1], coords[2][0], coords[2][1], 1+face[2])
 
     spin += 1
+
+    if zoom == 50:
+     direction = -1
+    elif zoom == 10:
+     direction = 1
+
+    if spin%2 == 1:
+     zoom += direction
